@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -55,14 +54,14 @@ namespace Chat.Data.Migrations
                 {
                     table.PrimaryKey("PK_ChannelUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ChannelUsers_Channels_UserId",
-                        column: x => x.UserId,
+                        name: "FK_ChannelUsers_Channels_ChannelId",
+                        column: x => x.ChannelId,
                         principalTable: "Channels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ChannelUsers_Users_ChannelId",
-                        column: x => x.ChannelId,
+                        name: "FK_ChannelUsers_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -76,8 +75,7 @@ namespace Chat.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Content = table.Column<string>(type: "text", nullable: true),
                     UserSentId = table.Column<int>(type: "integer", nullable: false),
-                    UserRecievedId = table.Column<int>(type: "integer", nullable: false),
-                    UserReceivedId = table.Column<int>(type: "integer", nullable: true),
+                    UserReceivedId = table.Column<int>(type: "integer", nullable: false),
                     TimeSent = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
@@ -177,16 +175,16 @@ namespace Chat.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "PrivateMessages",
-                columns: new[] { "Id", "Content", "TimeSent", "UserReceivedId", "UserRecievedId", "UserSentId" },
+                columns: new[] { "Id", "Content", "TimeSent", "UserReceivedId", "UserSentId" },
                 values: new object[,]
                 {
-                    { 1, "Sretan rodendan sunce\nVoli  te puuuuno!!!!", new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc), null, 3, 1 },
-                    { 2, "hvala tii", new DateTime(2017, 6, 23, 0, 1, 10, 0, DateTimeKind.Utc), null, 1, 3 },
-                    { 3, "Sretan rockas!!!\nLove you!!!!", new DateTime(2017, 7, 24, 0, 0, 10, 0, DateTimeKind.Utc), null, 1, 3 },
-                    { 4, "Hvala tiiii <3", new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc), null, 3, 1 },
-                    { 5, "Opet me zaustavila policija", new DateTime(2023, 8, 27, 2, 7, 10, 0, DateTimeKind.Utc), null, 1, 4 },
-                    { 6, "Naplatili su mi kaznu zbog registracije", new DateTime(2023, 8, 27, 2, 7, 30, 0, DateTimeKind.Utc), null, 1, 4 },
-                    { 7, "Nemoj me zezat", new DateTime(2023, 8, 27, 2, 31, 10, 0, DateTimeKind.Utc), null, 4, 1 }
+                    { 1, "Sretan rodendan sunce Voli  te puuuuno", new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc), 3, 1 },
+                    { 2, "hvala tii", new DateTime(2017, 6, 23, 0, 1, 10, 0, DateTimeKind.Utc), 1, 3 },
+                    { 3, "Sretan rockas Love you", new DateTime(2017, 7, 24, 0, 0, 10, 0, DateTimeKind.Utc), 1, 3 },
+                    { 4, "Hvala tiiii", new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc), 3, 1 },
+                    { 5, "Opet me zaustavila policija", new DateTime(2023, 8, 27, 2, 7, 10, 0, DateTimeKind.Utc), 1, 4 },
+                    { 6, "Naplatili su mi kaznu zbog registracije", new DateTime(2023, 8, 27, 2, 7, 30, 0, DateTimeKind.Utc), 1, 4 },
+                    { 7, "Nemoj me zezat", new DateTime(2023, 8, 27, 2, 31, 10, 0, DateTimeKind.Utc), 4, 1 }
                 });
 
             migrationBuilder.InsertData(

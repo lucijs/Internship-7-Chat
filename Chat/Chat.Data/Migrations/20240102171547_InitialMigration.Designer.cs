@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Chat.Data.Migrations
 {
     [DbContext(typeof(ChatDbContext))]
-    [Migration("20240102092622_InitialMigration")]
+    [Migration("20240102171547_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -399,10 +399,7 @@ namespace Chat.Data.Migrations
                     b.Property<DateTime>("TimeSent")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("UserReceivedId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserRecievedId")
+                    b.Property<int>("UserReceivedId")
                         .HasColumnType("integer");
 
                     b.Property<int>("UserSentId")
@@ -420,9 +417,9 @@ namespace Chat.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Content = "Sretan rodendan sunce\nVoli  te puuuuno!!!!",
+                            Content = "Sretan rodendan sunce Voli  te puuuuno",
                             TimeSent = new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc),
-                            UserRecievedId = 3,
+                            UserReceivedId = 3,
                             UserSentId = 1
                         },
                         new
@@ -430,23 +427,23 @@ namespace Chat.Data.Migrations
                             Id = 2,
                             Content = "hvala tii",
                             TimeSent = new DateTime(2017, 6, 23, 0, 1, 10, 0, DateTimeKind.Utc),
-                            UserRecievedId = 1,
+                            UserReceivedId = 1,
                             UserSentId = 3
                         },
                         new
                         {
                             Id = 3,
-                            Content = "Sretan rockas!!!\nLove you!!!!",
+                            Content = "Sretan rockas Love you",
                             TimeSent = new DateTime(2017, 7, 24, 0, 0, 10, 0, DateTimeKind.Utc),
-                            UserRecievedId = 1,
+                            UserReceivedId = 1,
                             UserSentId = 3
                         },
                         new
                         {
                             Id = 4,
-                            Content = "Hvala tiiii <3",
+                            Content = "Hvala tiiii",
                             TimeSent = new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc),
-                            UserRecievedId = 3,
+                            UserReceivedId = 3,
                             UserSentId = 1
                         },
                         new
@@ -454,7 +451,7 @@ namespace Chat.Data.Migrations
                             Id = 5,
                             Content = "Opet me zaustavila policija",
                             TimeSent = new DateTime(2023, 8, 27, 2, 7, 10, 0, DateTimeKind.Utc),
-                            UserRecievedId = 1,
+                            UserReceivedId = 1,
                             UserSentId = 4
                         },
                         new
@@ -462,7 +459,7 @@ namespace Chat.Data.Migrations
                             Id = 6,
                             Content = "Naplatili su mi kaznu zbog registracije",
                             TimeSent = new DateTime(2023, 8, 27, 2, 7, 30, 0, DateTimeKind.Utc),
-                            UserRecievedId = 1,
+                            UserReceivedId = 1,
                             UserSentId = 4
                         },
                         new
@@ -470,7 +467,7 @@ namespace Chat.Data.Migrations
                             Id = 7,
                             Content = "Nemoj me zezat",
                             TimeSent = new DateTime(2023, 8, 27, 2, 31, 10, 0, DateTimeKind.Utc),
-                            UserRecievedId = 4,
+                            UserReceivedId = 4,
                             UserSentId = 1
                         });
                 });
@@ -552,14 +549,14 @@ namespace Chat.Data.Migrations
 
             modelBuilder.Entity("Chat.Data.Entities.Models.ChannelUser", b =>
                 {
-                    b.HasOne("Chat.Data.Entities.Models.User", "User")
-                        .WithMany("UserChannels")
+                    b.HasOne("Chat.Data.Entities.Models.Channel", "Channel")
+                        .WithMany("ChannelUsers")
                         .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Chat.Data.Entities.Models.Channel", "Channel")
-                        .WithMany("ChannelUsers")
+                    b.HasOne("Chat.Data.Entities.Models.User", "User")
+                        .WithMany("UserChannels")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -593,7 +590,8 @@ namespace Chat.Data.Migrations
                     b.HasOne("Chat.Data.Entities.Models.User", "UserReceived")
                         .WithMany("MessagesReceived")
                         .HasForeignKey("UserReceivedId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Chat.Data.Entities.Models.User", "UserSent")
                         .WithMany("MessagesSent")

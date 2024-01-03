@@ -10,4 +10,12 @@
     <ProjectReference Include="..\Chat.Data\Chat.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Factories\" />
+    <Folder Include="Models\" />
+    <Folder Include="Repositorioes\" />
+  </ItemGroup>
+
 </Project>

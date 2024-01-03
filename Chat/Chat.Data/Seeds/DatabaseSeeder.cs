@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Chat.Data.Entities.Models;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Chat.Data.Seeds
 {
@@ -64,16 +62,16 @@ namespace Chat.Data.Seeds
                 }
                 });
 
-            builder.Entity<PrivateMessage>()
+             builder.Entity<PrivateMessage>()
                 .HasData(new List<PrivateMessage>
                 {
                 new PrivateMessage()
                 {
                     Id = 1,
                     TimeSent = new DateTime(2017, 6, 23, 0, 0, 10, DateTimeKind.Utc),
-                    Content = "Sretan rodendan sunce\nVoli  te puuuuno!!!!",
+                    Content = "Sretan rodendan sunce Voli  te puuuuno",
                     UserSentId = 1,
-                    UserRecievedId=3,
+                    UserReceivedId=3,
                 },
                 new PrivateMessage()
                 {
@@ -81,23 +79,23 @@ namespace Chat.Data.Seeds
                     TimeSent = new DateTime(2017, 6, 23, 0, 1, 10, DateTimeKind.Utc),
                     Content = "hvala tii",
                     UserSentId = 3,
-                    UserRecievedId=1,
+                    UserReceivedId=1,
                 },
                 new PrivateMessage()
                 {
                     Id = 3,
                     TimeSent = new DateTime(2017, 7, 24, 0, 0, 10, DateTimeKind.Utc),
-                    Content = "Sretan rockas!!!\nLove you!!!!",
+                    Content = "Sretan rockas Love you",
                     UserSentId = 3,
-                    UserRecievedId=1,
+                    UserReceivedId=1,
                 },
                 new PrivateMessage()
                 {
                     Id = 4,
                     TimeSent = new DateTime(2017, 6, 23, 0, 0, 10, DateTimeKind.Utc),
-                    Content = "Hvala tiiii <3",
+                    Content = "Hvala tiiii",
                     UserSentId = 1,
-                    UserRecievedId=3,
+                    UserReceivedId=3,
                 },
                 new PrivateMessage()
                 {
@@ -105,7 +103,7 @@ namespace Chat.Data.Seeds
                     TimeSent = new DateTime(2023, 8, 27, 2, 7, 10, DateTimeKind.Utc),
                     Content = "Opet me zaustavila policija",
                     UserSentId = 4,
-                    UserRecievedId=1,
+                    UserReceivedId=1,
                 },
                 new PrivateMessage()
                 {
@@ -113,7 +111,7 @@ namespace Chat.Data.Seeds
                     TimeSent = new DateTime(2023, 8, 27, 2, 7, 30, DateTimeKind.Utc),
                     Content = "Naplatili su mi kaznu zbog registracije",
                     UserSentId = 4,
-                    UserRecievedId=1,
+                    UserReceivedId=1,
                 },
                 new PrivateMessage()
                 {
@@ -121,7 +119,7 @@ namespace Chat.Data.Seeds
                     TimeSent = new DateTime(2023, 8, 27, 2, 31, 10, DateTimeKind.Utc),
                     Content = "Nemoj me zezat",
                     UserSentId = 1,
-                    UserRecievedId=4,
+                    UserReceivedId=4,
                 }
                 });
 

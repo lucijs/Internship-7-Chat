@@ -23,12 +23,12 @@ public class ChatDbContext: DbContext
         modelBuilder.Entity<ChannelUser>()
             .HasOne(c => c.Channel)
             .WithMany(c=> c.ChannelUsers)
-            .HasForeignKey(cu => cu.UserId);
+            .HasForeignKey(cu => cu.ChannelId);
 
         modelBuilder.Entity<ChannelUser>()
             .HasOne(u => u.User)
             .WithMany(u => u.UserChannels)
-            .HasForeignKey(cu => cu.ChannelId)
+            .HasForeignKey(cu => cu.UserId)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<PrivateMessage>()
@@ -63,7 +63,7 @@ public class TodoAppDbContextFactory : IDesignTimeDbContextFactory<ChatDbContext
 
         config.Providers
             .First()
-            .TryGet("connectionStrings:add:TodoApp:connectionString", out var connectionString);
+            .TryGet("connectionStrings:add:Chat:connectionString", out var connectionString);
 
         var options = new DbContextOptionsBuilder<ChatDbContext>()
             .UseNpgsql(connectionString)
