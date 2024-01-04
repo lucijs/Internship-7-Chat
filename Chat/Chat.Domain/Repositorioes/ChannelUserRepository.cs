@@ -1,7 +1,6 @@
 ﻿using Chat.Data.Entities.Models;
 using Chat.Data.Entities;
 using Chat.Domain.Enums;
-using System.ComponentModel;
 
 namespace Chat.Domain.Repositorioes
 {

@@ -1,7 +1,6 @@
 ﻿using Chat.Data.Entities.Models;
 using Chat.Data.Entities;
 using Chat.Domain.Enums;
-using Microsoft.EntityFrameworkCore;
 
 namespace Chat.Domain.Repositorioes
 {
@@ -21,16 +20,6 @@ namespace Chat.Domain.Repositorioes
                 TimeSent=DateTime.UtcNow
             };
             DbContext.PrivateMessages.Add(message);
- //           var usersChanged = DbContext.Users.Where(u => u.Id == userReceivedId || u.Id == userSentId).ToList();
- //           foreach (var user in usersChanged)
- //           { 
- //               user.DirectMessages.Add(message);
- //               foreach(var u in user.DirectMessages)
- //                   Console.WriteLine(u.Content);
- //
- //               Console.ReadKey();
- //               //var reposnseResult = DbContext.Users.Update(user);
- //           }
             
             return SaveChanges();
         }

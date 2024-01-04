@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Chat.Data.Entities;
-using Chat.Data.Entities.Models;
-
-namespace Chat.Data.Entities.Models
+﻿namespace Chat.Data.Entities.Models
 {
     public class Channel
     {

@@ -1,6 +1,4 @@
 ﻿using Chat.Data.Entities.Models;
-using Chat.Domain.Models;
-using System;
 
 namespace Chat.Presentation.Helpers
 {

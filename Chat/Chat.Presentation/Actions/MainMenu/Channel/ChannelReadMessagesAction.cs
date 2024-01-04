@@ -1,9 +1,7 @@
 ﻿using Chat.Data.Entities.Models;
 using Chat.Domain.Repositorioes;
 using Chat.Presentation.Abstractions;
-using Chat.Presentation.Actions.MainMenu.PrivateMessage;
 using Chat.Presentation.Helpers;
-using System.Threading.Channels;
 
 namespace Chat.Presentation.Actions.MainMenu.Channel
 {
