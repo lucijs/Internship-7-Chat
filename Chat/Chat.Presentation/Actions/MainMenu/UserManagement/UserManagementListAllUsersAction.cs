@@ -1,6 +1,7 @@
 ﻿using Chat.Data.Entities.Models;
 using Chat.Domain.Repositorioes;
 using Chat.Presentation.Abstractions;
+using Chat.Presentation.Extensions;
 using Chat.Presentation.Helpers;
 
 namespace Chat.Presentation.Actions.MainMenu.UserManagement
@@ -24,7 +25,15 @@ namespace Chat.Presentation.Actions.MainMenu.UserManagement
             var users = _userRepository.GetAll();
             Writer.Write(users);
 
+            Reader.TryReadNumber("Enter the id number of user you want to change", out int id);
 
+            var choosenUser = _userRepository.GetById(id);
+            if (choosenUser != null)
+            {
+                Console.Clear();
+                Writer.Write(choosenUser);
+                ActionExtensions.PrintActions(User,choosenUser);
+            }
 
             Console.ReadKey ();
         }

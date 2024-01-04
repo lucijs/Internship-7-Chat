@@ -43,6 +43,20 @@ namespace Chat.Domain.Repositorioes
 
             return SaveChanges();
         }
+
+        public ResponseResultType Update(User user, int id, bool isAdmin)
+        {
+            var userToUpdate = GetById(id);
+            if (userToUpdate is null)
+            {
+                return ResponseResultType.NotFound;
+            }
+
+            userToUpdate.Email = user.Email;
+            userToUpdate.Password = user.Password;
+            userToUpdate.IsAdmin= isAdmin;
+            return SaveChanges();
+        }
         public User? GetByEmailAndPassword(string email, string password) => DbContext.Users.FirstOrDefault(u => u.Password == password && u.Email == email);
         public User? GetById(int id) => DbContext.Users.FirstOrDefault(u => u.Id == id);
         public User? GetByEmail(string email) => DbContext.Users.FirstOrDefault(u => u.Email == email);

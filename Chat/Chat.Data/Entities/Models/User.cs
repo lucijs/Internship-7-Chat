@@ -7,6 +7,12 @@
             Email = email;
             Password = password;
         }
+        public User(string email, string password, bool isAdmin)
+        {
+            Email = email;
+            Password = password;
+            IsAdmin = isAdmin;
+        }
 
         public int Id { get; set; }
         public string Email { get; set; }

@@ -1,7 +1,5 @@
 ﻿using Chat.Data.Entities.Models;
-using Chat.Domain.Models;
-using System.Security.Cryptography;
-using System.Threading.Channels;
+using System;
 
 namespace Chat.Presentation.Helpers
 {
@@ -48,14 +46,29 @@ namespace Chat.Presentation.Helpers
         public static bool GenerateRandomString()
         {
             Guid myGuid = Guid.NewGuid();
-            string fourRandomLatters = myGuid.ToString().Substring(0,4);
+            string fourRandomLatters = myGuid.ToString().Substring(0,5);
+            if (!ContainsLetter(fourRandomLatters) || !ContainsNumber(fourRandomLatters))
+                return GenerateRandomString();
             Console.WriteLine("To check you are not a bot repeat this text: "+fourRandomLatters);
             Reader.ReadInput(out string input);
             if (input == fourRandomLatters)
                 return true;
             return false;
         }
-
+        public static bool ContainsLetter(string line)
+        { 
+            foreach(char c in line)
+                if(char.IsLetter(c))
+                    return true;
+            return false;
+        }
+        public static bool ContainsNumber(string line)
+        {
+            foreach (char c in line)
+                if (char.IsDigit(c))
+                    return true;
+            return false;
+        }
         public static void HowShouldYourEmailLook(int number, string where)
         {
             Error($"Your emial shoul contain at least {number} letter {where}.");

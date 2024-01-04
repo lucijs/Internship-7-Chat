@@ -34,7 +34,7 @@ namespace Chat.Presentation.Actions.MainMenu.Settings
             var responseReturn = _userRepository.Update(updatedUser, User.Id);
             if (responseReturn is Domain.Enums.ResponseResultType.Success)
             {
-                Writer.Write(User);
+                Writer.Write(updatedUser);
                 Console.ReadKey();
                 return;
             }

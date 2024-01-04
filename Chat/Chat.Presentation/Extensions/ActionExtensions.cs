@@ -57,6 +57,12 @@ namespace Chat.Presentation.Extensions
             var mainMenuActions = MainMenuFactoryIfNotAdmin.CreateActions(user);
             mainMenuActions.PrintActionsAndOpen();
         }
+
+        public static void PrintActions(User user, User choosenUser)
+        {
+            var mainMenuActions = UserManagementOptionsFactory.CreateActions(user, choosenUser);
+            mainMenuActions.PrintActionsAndOpen();
+        }
         public static void PrintActions()
         {
             var homepageActions = HomepageFactory.CreateActions();

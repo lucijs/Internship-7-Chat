@@ -37,10 +37,10 @@ namespace Chat.Presentation.Actions.Homepage.SingIn
                 Console.ReadKey();
                 if (newUser.IsAdmin)
             { 
-                ActionExtensions.PrintActions(user, true);
+                ActionExtensions.PrintActions(newUser, true);
                 return;
             }
-            ActionExtensions.PrintActions(user);
+            ActionExtensions.PrintActions(newUser);
             }
 
             Console.WriteLine("Failed to add user, no changes saved!");
