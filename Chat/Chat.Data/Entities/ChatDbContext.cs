@@ -33,12 +33,7 @@ public class ChatDbContext: DbContext
 
         modelBuilder.Entity<PrivateMessage>()
             .HasOne(u => u.UserSent)
-            .WithMany(pm => pm.MessagesSent)
-            .OnDelete(DeleteBehavior.Cascade);
-
-        modelBuilder.Entity<PrivateMessage>()
-            .HasOne(u => u.UserReceived)
-            .WithMany(pm => pm.MessagesReceived)
+            .WithMany(pm => pm.PrivateMessages)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<MessagesInTheChannel>()

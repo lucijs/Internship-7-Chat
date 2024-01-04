@@ -9,7 +9,7 @@ namespace Chat.Presentation.Actions.Homepage.SingIn
 {
     public class SingInAction : IAction
     {
-        public string Name { get; set; } = "Sing in";
+        public string Name { get; set; } = "Sign in";
         private readonly UserRepository _userRepository;
         public User User { get; set; }
         public int MenuIndex { get; set; }

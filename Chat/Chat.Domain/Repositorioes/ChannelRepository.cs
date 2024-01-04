@@ -1,6 +1,8 @@
 ﻿using Chat.Domain.Enums;
 using Chat.Data.Entities.Models;
 using Chat.Data.Entities;
+using Chat.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Chat.Domain.Repositorioes
 {
@@ -16,9 +18,15 @@ namespace Chat.Domain.Repositorioes
             return SaveChanges();
         }
 
-        public Channel? GetByName(string name) => DbContext.Channels.FirstOrDefault(g => g.Name == name);
+        public Channel? GetByName(string name) => DbContext.Channels.FirstOrDefault(c => c.Name == name);
 
-        public ICollection<Channel> GetAll() => DbContext.Channels.ToList();
+        public int NumberOfMembers(Channel channel)
+        {
+            var number = DbContext.ChannelUsers
+                .Where(cu => cu.ChannelId == channel.Id)
+                .Count();
+            return number;
 
+        }
     }
 }

@@ -92,7 +92,7 @@ namespace Chat.Data.Seeds
                 new PrivateMessage()
                 {
                     Id = 4,
-                    TimeSent = new DateTime(2017, 6, 23, 0, 0, 10, DateTimeKind.Utc),
+                    TimeSent = new DateTime(2017, 7, 24, 0, 5, 10, DateTimeKind.Utc),
                     Content = "Hvala tiiii",
                     UserSentId = 1,
                     UserReceivedId=3,

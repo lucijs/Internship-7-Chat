@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -181,7 +182,7 @@ namespace Chat.Data.Migrations
                     { 1, "Sretan rodendan sunce Voli  te puuuuno", new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc), 3, 1 },
                     { 2, "hvala tii", new DateTime(2017, 6, 23, 0, 1, 10, 0, DateTimeKind.Utc), 1, 3 },
                     { 3, "Sretan rockas Love you", new DateTime(2017, 7, 24, 0, 0, 10, 0, DateTimeKind.Utc), 1, 3 },
-                    { 4, "Hvala tiiii", new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc), 3, 1 },
+                    { 4, "Hvala tiiii", new DateTime(2017, 7, 24, 0, 5, 10, 0, DateTimeKind.Utc), 3, 1 },
                     { 5, "Opet me zaustavila policija", new DateTime(2023, 8, 27, 2, 7, 10, 0, DateTimeKind.Utc), 1, 4 },
                     { 6, "Naplatili su mi kaznu zbog registracije", new DateTime(2023, 8, 27, 2, 7, 30, 0, DateTimeKind.Utc), 1, 4 },
                     { 7, "Nemoj me zezat", new DateTime(2023, 8, 27, 2, 31, 10, 0, DateTimeKind.Utc), 4, 1 }

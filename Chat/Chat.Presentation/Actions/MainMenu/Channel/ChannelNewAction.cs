@@ -36,12 +36,11 @@ namespace Chat.Presentation.Actions.MainMenu.Channel
             };
 
             var responseResult = _channelRepository.Add(channel);
-            var anotherResponseResult = _channelUserRepository.Add(channel, User.Id);
+            var anotherResponseResult = _channelUserRepository.Add(channel.Id, User.Id);
                        
             if (responseResult is ResponseResultType.Success && anotherResponseResult is ResponseResultType.Success)
             {
                 Writer.Write(channel);
-                
                 Console.ReadKey();
                 return;
             }

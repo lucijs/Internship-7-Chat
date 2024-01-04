@@ -1,4 +1,5 @@
 ﻿using Chat.Data.Entities.Models;
+using Chat.Domain.Models;
 using System;
 
 namespace Chat.Presentation.Helpers
@@ -15,22 +16,27 @@ namespace Chat.Presentation.Helpers
             foreach (var user in users)
                 Write(user);
         }
-        public static void Write(Data.Entities.Models.Channel channel)
+        public static void Write(Data.Entities.Models.Channel channel, int numberOfMembers)
         { 
-            Console.WriteLine(channel.Name);
+            Console.WriteLine($"{channel.Name} {numberOfMembers}");
         }
-
+        public static void Write(Data.Entities.Models.Channel channel)
+        {
+            Console.WriteLine($"{channel.Name}");
+        }
         public static void Write(ICollection<Data.Entities.Models.Channel> channels)
         {
             foreach (var channel in channels)
                 Write(channel);
 
         }
-        public static void Write(ICollection<MessagesInTheChannel> channelMessages)
+        public static void Write(MessagesInTheChannel message, string email)
         {
-           
-
-
+            Console.WriteLine($"{message.TimeSent.ToString()} {email}  {message.Content}");
+        }
+        public static void Write(PrivateMessage message, string email)
+        {
+            Console.WriteLine($"{message.TimeSent.ToString()} {email}  {message.Content}");
         }
         public static void Write(string output)
         {

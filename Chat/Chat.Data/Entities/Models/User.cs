@@ -20,11 +20,10 @@
 
         public bool IsAdmin { get; set; } = false;
 
-        public ICollection<MessagesInTheChannel> MessagesInTheChannel { get; } = new List<MessagesInTheChannel>();
-        public ICollection<ChannelUser> UserChannels { get; } = new List<ChannelUser>();
+        public ICollection<MessagesInTheChannel> MessagesInTheChannel { get; set; } = new List<MessagesInTheChannel>();
+        public ICollection<ChannelUser> UserChannels { get; set; } = new List<ChannelUser>();
 
-        public ICollection<PrivateMessage> MessagesSent { get; } = new List<PrivateMessage>();
+        public ICollection<PrivateMessage> PrivateMessages { get; set; } = new List<PrivateMessage>();
 
-        public ICollection<PrivateMessage> MessagesReceived { get; } = new List<PrivateMessage>();
     }
 }

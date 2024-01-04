@@ -15,7 +15,7 @@ namespace Chat.Presentation.Factories
         {
             new ChannelNewAction(RepositoryFactory.Create<ChannelRepository>(), RepositoryFactory.Create<ChannelUserRepository>(),user),
             new ChannelAddToExistingAction(RepositoryFactory.Create<UserRepository>(), RepositoryFactory.Create<ChannelUserRepository>(), RepositoryFactory.Create<ChannelRepository>(),user),
-            new ChannelReadMessagesAction(RepositoryFactory.Create<UserRepository>(),RepositoryFactory.Create<ChannelRepository>(),RepositoryFactory.Create<MessagesInTheChannelRepository>(),user),
+            new ChannelReadMessagesAction(RepositoryFactory.Create<ChannelUserRepository>(),RepositoryFactory.Create<UserRepository>(),RepositoryFactory.Create<ChannelRepository>(),RepositoryFactory.Create<MessagesInTheChannelRepository>(),user),
             new ExitMenuAction()
         };
 

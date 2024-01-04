@@ -2,6 +2,8 @@
 using Chat.Presentation.Actions.MainMenu.PrivateMessage;
 using Chat.Presentation.Actions;
 using Chat.Data.Entities.Models;
+using TodoApp.Domain.Factories;
+using Chat.Domain.Repositorioes;
 
 namespace Chat.Presentation.Factories
 {
@@ -11,8 +13,8 @@ namespace Chat.Presentation.Factories
         {
             var actions = new List<IAction>
         {
-            new PrivateMessagesNewAction(user),
-            new PrivateMessageExistingAction(user),
+            new PrivateMessagesNewAction(user, RepositoryFactory.Create<UserRepository>(),RepositoryFactory.Create<PrivateMessageRepository>()),
+            new PrivateMessageExistingAction(user, RepositoryFactory.Create<UserRepository>(), RepositoryFactory.Create<PrivateMessageRepository>()),
             new ExitMenuAction()
         };
 

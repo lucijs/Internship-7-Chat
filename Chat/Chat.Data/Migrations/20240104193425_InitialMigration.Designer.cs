@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Chat.Data.Migrations
 {
     [DbContext(typeof(ChatDbContext))]
-    [Migration("20240102171547_InitialMigration")]
+    [Migration("20240104193425_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -442,7 +442,7 @@ namespace Chat.Data.Migrations
                         {
                             Id = 4,
                             Content = "Hvala tiiii",
-                            TimeSent = new DateTime(2017, 6, 23, 0, 0, 10, 0, DateTimeKind.Utc),
+                            TimeSent = new DateTime(2017, 7, 24, 0, 5, 10, 0, DateTimeKind.Utc),
                             UserReceivedId = 3,
                             UserSentId = 1
                         },
@@ -588,13 +588,13 @@ namespace Chat.Data.Migrations
             modelBuilder.Entity("Chat.Data.Entities.Models.PrivateMessage", b =>
                 {
                     b.HasOne("Chat.Data.Entities.Models.User", "UserReceived")
-                        .WithMany("MessagesReceived")
+                        .WithMany()
                         .HasForeignKey("UserReceivedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Chat.Data.Entities.Models.User", "UserSent")
-                        .WithMany("MessagesSent")
+                        .WithMany("DirectMessages")
                         .HasForeignKey("UserSentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -618,11 +618,9 @@ namespace Chat.Data.Migrations
 
             modelBuilder.Entity("Chat.Data.Entities.Models.User", b =>
                 {
+                    b.Navigation("DirectMessages");
+
                     b.Navigation("MessagesInTheChannel");
-
-                    b.Navigation("MessagesReceived");
-
-                    b.Navigation("MessagesSent");
 
                     b.Navigation("UserChannels");
                 });
