@@ -1,10 +1,13 @@
-﻿using Chat.Presentation.Extensions;
+﻿using Chat.Data.Entities.Models;
+using Chat.Presentation.Extensions;
 
 namespace Chat.Presentation.Abstractions
 {
     public class BaseMenuAction : IMenuAction
     {
         public int MenuIndex { get; set; }
+        public User User { get; set; }
+
         public string Name { get; set; } = "NoName action";
         public IList<IAction> Actions { get; set; }
 

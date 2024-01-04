@@ -1,18 +1,19 @@
-﻿using Chat.Presentation.Abstractions;
+﻿using Chat.Data.Entities.Models;
+using Chat.Domain.Repositorioes;
+using Chat.Presentation.Abstractions;
 using Chat.Presentation.Actions.MainMenu.UserManagement;
 using Chat.Presentation.Actions;
+using TodoApp.Domain.Factories;
 
 namespace Chat.Presentation.Factories
 {
-    public class UserManagementFactory
+    public class UserManagementAllUsersFactory
     {
-        public static UserManagementAction Create()
+        public static UserManagementAction Create(User user)
         {
             var actions = new List<IAction>
         {
-            new UserManagementDeleteAction(),
-            new UserManagementChangeEmailAction(),
-            new UserManagementAddAdminAction(),
+            new UserManagementListAllUsersAction(user, RepositoryFactory.Create<UserRepository>()),
             new ExitMenuAction()
         };
 

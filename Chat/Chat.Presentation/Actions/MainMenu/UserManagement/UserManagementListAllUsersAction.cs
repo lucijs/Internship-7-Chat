@@ -1,16 +1,17 @@
 ﻿using Chat.Data.Entities.Models;
 using Chat.Domain.Repositorioes;
 using Chat.Presentation.Abstractions;
+using Chat.Presentation.Helpers;
 
 namespace Chat.Presentation.Actions.MainMenu.UserManagement
 {
-    public class UserManagementAddAdminAction : IAction
+    public class UserManagementListAllUsersAction : IAction
     {
-        public string Name { get; set; } = "Add new admin";
+        public string Name { get; set; } = "List all users";
         public User User { get; set; }
         private readonly UserRepository _userRepository;
 
-        public UserManagementAddAdminAction(User user, UserRepository userRepository)
+        public UserManagementListAllUsersAction(User user, UserRepository userRepository)
         {
             User = user;
             _userRepository = userRepository;
@@ -20,8 +21,12 @@ namespace Chat.Presentation.Actions.MainMenu.UserManagement
         public void Open()
         {
             Console.Clear();
+            var users = _userRepository.GetAll();
+            Writer.Write(users);
 
-            Console.WriteLine("novi admin");
+
+
+            Console.ReadKey ();
         }
     }
 }

@@ -3,6 +3,8 @@ using Chat.Presentation.Actions.Homepage.Login;
 using Chat.Presentation.Actions.Homepage.SingIn;
 using Chat.Presentation.Actions;
 using Chat.Presentation.Extensions;
+using TodoApp.Domain.Factories;
+using Chat.Domain.Repositorioes;
 
 namespace Chat.Presentation.Factories
 {
@@ -12,8 +14,8 @@ namespace Chat.Presentation.Factories
         {
             var actions = new List<IAction>
         {
-            new LoginAction(),
-            new SingInAction(),
+            new LoginAction(RepositoryFactory.Create<UserRepository>()),
+            new SingInAction(RepositoryFactory.Create<UserRepository>()),
             new ExitMenuAction(),
         };
 

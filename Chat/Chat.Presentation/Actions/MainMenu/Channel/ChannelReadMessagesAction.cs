@@ -5,30 +5,27 @@ using Chat.Presentation.Helpers;
 
 namespace Chat.Presentation.Actions.MainMenu.Channel
 {
-    public class ChannelAddToExistingAction : IAction
+    public class ChannelReadMessagesAction : IAction
     {
+        public int MenuIndex { get; set; }
         private readonly UserRepository _userRepository;
-        private readonly ChannelUserRepository _channeluserRepository;
         private readonly ChannelRepository _channelRepository;
-        public User User { get; set; }
+        private readonly MessagesInTheChannelRepository _messageRepository;
 
-        public ChannelAddToExistingAction(UserRepository userRepository, ChannelUserRepository channeluserRepository, ChannelRepository channelRepository,User user)
+        public User User { get; set; }
+        public string Name { get; set; } = "Read messages";
+        public ChannelReadMessagesAction(UserRepository userRepository, ChannelRepository channelRepository,MessagesInTheChannelRepository messagesInTheChannelRepository, User user)
         {
             _userRepository = userRepository;
-            _channeluserRepository = channeluserRepository;
             _channelRepository = channelRepository;
+            _messageRepository = messagesInTheChannelRepository;
             User = user;
-
         }
-        public int MenuIndex { get; set; }
-
-        public string Name { get; set; } = "Enter existing channel";
-
         public void Open()
         {
-            var channelsUserCanBeAddedTo = _userRepository.UserNotInChannels(User.Id);
-            Writer.Write(channelsUserCanBeAddedTo);
-            Reader.TryReadLine("\n\nChoose the channel you want to enter", out var name);
+            var channelsUserIsIn = _userRepository.UserInChannels(User.Id);
+            Writer.Write(channelsUserIsIn);
+            Reader.TryReadLine("\n\nChoose the channel you want to read", out var name);
             var channel = _channelRepository.GetByName(name);
             if (channel is null)
             {
@@ -36,7 +33,7 @@ namespace Chat.Presentation.Actions.MainMenu.Channel
                 Console.ReadLine();
                 return;
             }
-            var responseResult = _channeluserRepository.Add(channel, User.Id);
+
             Console.ReadKey();
         }
     }
